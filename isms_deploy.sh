@@ -1,7 +1,9 @@
 #!/bin/bash
 
+set -e
+
 # Download isms file
-curl https://raw.githubusercontent.com/DogsbodyOps/isms/refs/heads/main/ismsfile -o /usr/share/games/fortunes/isms
+curl -fsSL https://raw.githubusercontent.com/DogsbodyOps/isms/refs/heads/main/ismsfile -o /usr/share/games/fortunes/isms
 
 # Create dat file
 sudo strfile /usr/share/games/fortunes/isms
@@ -16,7 +18,7 @@ fortune isms | cowsay
 read -p "Deploy to bashrc? (y/n)" DEPLOY
 if [ $DEPLOY = y ]; then
   echo "Deploying to bashrc"
-  echo "fortune isms | cowsay" >> ~/.bashrc
+  grep -qF 'fortune isms | cowsay' ~/.bashrc || echo 'fortune isms | cowsay' >> ~/.bashrc
 else
-  echo "Not Deploying, add ```fortune isms | cowsay``` to bahsrc if desired."
+  echo "Not Deploying, add ```fortune isms | cowsay``` to bashrc if desired."
 fi
