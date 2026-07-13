@@ -6,11 +6,11 @@ set -e
 curl -fsSL https://raw.githubusercontent.com/DogsbodyOps/isms/refs/heads/main/isms -o /usr/share/games/fortune/isms
 
 # Create dat file
-strfile /usr/share/games/fortunes/isms
+strfile /usr/share/games/fortune/isms
 
 #Amend File permissions
-chmod og+r /usr/share/games/fortunes/isms
-chmod og+r /usr/share/games/fortunes/isms.dat
+chmod og+r /usr/share/games/fortune/isms
+chmod og+r /usr/share/games/fortune/isms.dat
 
 # Test
 fortune isms | cowsay
